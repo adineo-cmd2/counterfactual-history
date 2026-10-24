@@ -1,0 +1,38 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+<BaseLayout title="Library">
+<h1 class="display-serif mb-4 text-2xl">Library</h1>
+<div id="list" class="space-y-2"></div>
+<script>
+  const BASE = "http://localhost:8006";
+  async function load() {
+    const r = await fetch(`${BASE}/api/simulate/library`);
+    const items = await r.json();
+    const el = document.getElementById("list")!;
+    el.innerHTML = "";
+    for (const s of items) {
+      const row = document.createElement("div");
+      row.className = "flex items-center justify-between border border-agedbrown/30 bg-white px-3 py-2";
+      const label = document.createElement("button");
+      label.className = "underline";
+      label.textContent = `#${s.id} ${s.premise.slice(0, 70)} (${s.divergence_year}, ${s.branches} branches)`;
+      label.onclick = () => { window.location.href = `/timeline?sid=${s.id}`; };
+      const del = document.createElement("button");
+      del.className = "text-deepred underline";
+      del.textContent = "Delete";
+      del.onclick = async () => {
+        let res = await fetch(`${BASE}/api/simulate/${s.id}`, { method: "DELETE" });
+        if (res.status === 409 && confirm("Has branches — force delete with children?")) {
+          res = await fetch(`${BASE}/api/simulate/${s.id}?force=true`, { method: "DELETE" });
+        }
+        load();
+      };
+      row.appendChild(label);
+      row.appendChild(del);
+      el.appendChild(row);
+    }
+  }
+  load();
+</script>
+</BaseLayout>

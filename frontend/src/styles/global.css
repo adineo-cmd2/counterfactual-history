@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background-color: #faf3e3;
+  color: #44403c;
+}
+
+.display-serif {
+  font-family: Georgia, 'Times New Roman', serif;
+}
+
+.mono-n {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+}

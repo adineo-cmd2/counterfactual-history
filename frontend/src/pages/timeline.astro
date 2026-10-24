@@ -1,0 +1,8 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import CausalTimeline from "../components/timeline/CausalTimeline.tsx";
+---
+<BaseLayout title="Timeline">
+<h1 class="display-serif mb-4 text-2xl">Timeline</h1>
+<CausalTimeline client:visible />
+</BaseLayout>

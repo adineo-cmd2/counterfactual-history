@@ -1,0 +1,43 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+<BaseLayout title="Start a simulation">
+<h1 class="display-serif mb-4 text-2xl">Start a simulation</h1>
+<div class="space-y-3">
+<textarea id="premise" rows="3" class="w-full border border-agedbrown/40 bg-white p-2" placeholder="What if…? e.g. the printing press was never invented"></textarea>
+<div class="flex items-center gap-3">
+<label class="text-sm">Divergence year: <span id="yv" class="mono-n">1440</span></label>
+<input id="year" type="range" min="1400" max="2000" value="1440" class="flex-1" />
+</div>
+<div id="doms" class="flex flex-wrap gap-3 text-sm"></div>
+<button id="go" class="bg-deepred px-4 py-1 text-white">Simulate</button>
+<p id="err" class="text-sm text-deepred"></p>
+</div>
+<script>
+  const DOMS = ["Politics","Religion","Science","Culture","Economics"];
+  const box = document.getElementById("doms")!;
+  const checked = new Set(DOMS);
+  for (const d of DOMS) {
+    const l = document.createElement("label");
+    const c = document.createElement("input");
+    c.type = "checkbox"; c.checked = true;
+    c.onchange = () => { c.checked ? checked.add(d) : checked.delete(d); };
+    l.append(c, ` ${d}`);
+    box.appendChild(l);
+  }
+  const year = document.getElementById("year") as HTMLInputElement;
+  year.oninput = () => { document.getElementById("yv")!.textContent = year.value; };
+  document.getElementById("go")!.onclick = async () => {
+    const premise = (document.getElementById("premise") as HTMLTextAreaElement).value.trim();
+    if (!premise) { document.getElementById("err")!.textContent = "Enter a premise."; return; }
+    const r = await fetch("http://localhost:8006/api/simulate/start", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ premise, divergence_year: Number(year.value), domains: [...checked] }),
+    });
+    if (!r.ok) { document.getElementById("err")!.textContent = await r.text(); return; }
+    const data = await r.json();
+    window.location.href = `/timeline?sid=${data.session_id}`;
+  };
+</script>
+</BaseLayout>
