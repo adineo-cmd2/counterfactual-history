@@ -4,11 +4,28 @@ export default {
   theme: {
     extend: {
       colors: {
-        parchment: '#faf3e3',
-        agedbrown: '#57534e',
-        deepred: '#b91c1c',
-        mossgreen: '#166534',
-      },
+        "parchment": "#f8f1dd",
+        "agedbrown": "#57534e",
+        "deepred": "#a91f1f",
+        "mossgreen": "#166534"
+},
+      fontFamily: {
+        "display": [
+                "'Cormorant Garamond'",
+                "Georgia",
+                "serif"
+        ],
+        "body": [
+                "'Inter'",
+                "system-ui",
+                "sans-serif"
+        ],
+        "mono": [
+                "'JetBrains Mono'",
+                "ui-monospace",
+                "monospace"
+        ]
+},
     },
   },
   plugins: [],

@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import { apiGet } from '../lib/apiClient';
+const BASE = (import.meta.env.BASE_URL ?? '/').replace(/\/$/, '');
 
 interface LibItem {
   id: number;
@@ -35,7 +36,7 @@ function buildForest(items: LibItem[]): Node[] {
 }
 
 function openSession(id: number) {
-  window.location.href = `/timeline?sid=${id}`;
+  window.location.href = `${BASE}/timeline?sid=${id}`;
 }
 
 function TreeNodeView({

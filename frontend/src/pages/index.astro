@@ -1,13 +1,114 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+
+const base = (import.meta.env.BASE_URL ?? '/').replace(/\/$/, '');
 ---
-<BaseLayout title="Change one thing. Watch history rewrite itself.">
-<h1 class="display-serif text-4xl">Change one thing. Watch history rewrite itself.</h1>
-<p class="mt-4 max-w-2xl">A causal engine fans your what-if across politics, religion, science, culture, and economics — five generations deep. Branch any step. Compare timelines. Everything simulated is clearly labelled speculative fiction.</p>
-<div class="mt-6 border-l-4 border-deepred pl-4">
-<p class="display-serif">1440 · “The printing press was never invented.”</p>
-<p class="text-sm opacity-70">├─ 1448 · Scribes keep power (Politics)</p>
-<p class="text-sm opacity-70">└─ 1460 · Slow copying stalls ideas (Science) ── branch here?</p>
+<BaseLayout title="Change one thing. Watch history rewrite itself." description="A causal engine that fans your what-if across politics, religion, science, culture and economics — five generations deep. Branch any step. Compare timelines.">
+<section class="hero">
+  <span class="hero-badge">Causal engine · five generations deep</span>
+  <h1 class="display-1">Change one thing.<br/><span class="grad-text">Watch history rewrite itself.</span></h1>
+  <p class="lead">A causal engine fans your what-if across politics, religion, science, culture, and economics — five generations deep. Branch any step. Compare timelines. Everything simulated is clearly labelled speculative fiction.</p>
+  <div class="hero-ctas">
+<a href={`${base}/start`} class="btn btn-accent btn-lg">Start a simulation</a>
+<a href={`${base}/library`} class="btn btn-ghost btn-lg">Browse the library</a>
+  </div>
+  <div class="hero-meta">
+<span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="4" r="2.5"/><circle cx="6" cy="20" r="2.5"/><circle cx="18" cy="12" r="2.5"/><path d="M6 6.5v11M8.5 5.8c4 1 5.7 3.4 7 5.9"/></svg>Branch any step</span>
+<span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3v18M16 3v18M3 8h5M3 16h5M16 12h5M12 5l4 3-4 3"/></svg>Compare timelines side by side</span>
+<span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2-6-2zM9 4v14M15 6v14"/></svg>Five domains per generation</span>
+  </div>
+</section>
+
+<section class="section">
+  <div class="grid-3">
+<article class="card card-hover p-5 reveal">
+  <div class="card-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M5.6 5.6l2.8 2.8M15.6 15.6l2.8 2.8M18.4 5.6l-2.8 2.8M8.4 15.6l-2.8 2.8"/></svg></div>
+  <h3 class="text-[1.02rem] font-semibold" style="letter-spacing:-0.01em">One divergence</h3>
+  <p class="mt-2 text-sm leading-relaxed" style="color: var(--ink-soft)">Pick a moment — 1440, 1914, 1969 — and change one thing about it.</p>
+</article>
+<article class="card card-hover p-5 reveal">
+  <div class="card-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="5" r="2.5"/><circle cx="12" cy="12" r="2.5"/><circle cx="19" cy="19" r="2.5"/><path d="M6.8 6.8 10.2 10.2M13.8 13.8l3.4 3.4"/></svg></div>
+  <h3 class="text-[1.02rem] font-semibold" style="letter-spacing:-0.01em">Five generations</h3>
+  <p class="mt-2 text-sm leading-relaxed" style="color: var(--ink-soft)">Consequences cascade generation by generation, each step dated and reasoned.</p>
+</article>
+<article class="card card-hover p-5 reveal">
+  <div class="card-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg></div>
+  <h3 class="text-[1.02rem] font-semibold" style="letter-spacing:-0.01em">Five domains</h3>
+  <p class="mt-2 text-sm leading-relaxed" style="color: var(--ink-soft)">Politics, religion, science, culture and economics evolve together, not in isolation.</p>
+</article>
+<article class="card card-hover p-5 reveal">
+  <div class="card-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="4" r="2.5"/><circle cx="6" cy="20" r="2.5"/><circle cx="18" cy="12" r="2.5"/><path d="M6 6.5v11M8.5 5.8c4 1 5.7 3.4 7 5.9"/></svg></div>
+  <h3 class="text-[1.02rem] font-semibold" style="letter-spacing:-0.01em">Branch explorer</h3>
+  <p class="mt-2 text-sm leading-relaxed" style="color: var(--ink-soft)">Any step can be branched — explore the road not taken from any point.</p>
+</article>
+<article class="card card-hover p-5 reveal">
+  <div class="card-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3v18M16 3v18M3 8h5M3 16h5M16 12h5M12 5l4 3-4 3"/></svg></div>
+  <h3 class="text-[1.02rem] font-semibold" style="letter-spacing:-0.01em">Side-by-side</h3>
+  <p class="mt-2 text-sm leading-relaxed" style="color: var(--ink-soft)">Compare two timelines column by column, event by event.</p>
+</article>
+<article class="card card-hover p-5 reveal">
+  <div class="card-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V2H6.5A2.5 2.5 0 0 0 4 4.5v15zM4 19.5A2.5 2.5 0 0 0 6.5 22H20v-5"/></svg></div>
+  <h3 class="text-[1.02rem] font-semibold" style="letter-spacing:-0.01em">Speculative, clearly</h3>
+  <p class="mt-2 text-sm leading-relaxed" style="color: var(--ink-soft)">Every simulated event is labelled speculative fiction — probability ratings included.</p>
+</article>
+  </div>
+</section>
+
+<section class="section reveal">
+  <div class="section-head">
+    <p class="eyebrow">Showcase</p>
+    <h2 class="section-title">A divergence, fanning out</h2>
+    <p class="lead">1440 · “The printing press was never invented.”</p>
+  </div>
+
+<div class="card p-5 sm:p-6" style="max-width: 44rem; margin: 0 auto">
+  <p class="display-serif text-xl">1440 · “The printing press was never invented.”</p>
+  <div class="mono-n mt-4 space-y-2 text-sm" style="color: var(--ink-soft)">
+    <p>├─ <span style="color: var(--accent); font-weight: 600">1448</span> · Scribes keep power <span class="chip ml-1">Politics · medium</span></p>
+    <p>└─ <span style="color: var(--accent); font-weight: 600">1460</span> · Slow copying stalls ideas <span class="chip ml-1">Science · high</span> — branch here?</p>
+  </div>
 </div>
-<a href="/start" class="mt-6 inline-block underline">Start a simulation</a>
+
+</section>
+
+<section class="section">
+  <div class="section-head">
+    <p class="eyebrow">How it works</p>
+    <h2 class="section-title">Three steps, no fluff</h2>
+  </div>
+  <div class="grid-3">
+<div class="step reveal">
+  <div class="step-num">01</div>
+  <h3 class="mt-2 text-[1rem] font-semibold">Choose a divergence</h3>
+  <p class="mt-1.5 text-sm leading-relaxed" style="color: var(--ink-soft)">A year and a single change — “the printing press was never invented.”</p>
+</div>
+<div class="step reveal">
+  <div class="step-num">02</div>
+  <h3 class="mt-2 text-[1rem] font-semibold">Watch it cascade</h3>
+  <p class="mt-1.5 text-sm leading-relaxed" style="color: var(--ink-soft)">The engine reasons five generations of consequences across five domains.</p>
+</div>
+<div class="step reveal">
+  <div class="step-num">03</div>
+  <h3 class="mt-2 text-[1rem] font-semibold">Branch & compare</h3>
+  <p class="mt-1.5 text-sm leading-relaxed" style="color: var(--ink-soft)">Fork any step, then compare timelines side by side in the atlas.</p>
+</div>
+  </div>
+</section>
+
+<section class="section reveal">
+  <div class="note-band">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+    <p>All simulated events are speculative fiction, not history. Probability legend — high: strong precedent · medium: plausible · speculative: thin evidence.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="cta-band reveal">
+    <h2 class="section-title">Which moment do you undo?</h2>
+    <p class="lead" style="margin: 0.8rem auto 1.8rem">Pick a divergence and watch five generations unfold.</p>
+    <a href={`${base}/start`} class="btn btn-accent btn-lg">Start a simulation</a>
+  </div>
+</section>
+
 </BaseLayout>

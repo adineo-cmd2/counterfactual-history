@@ -2,7 +2,7 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 <BaseLayout title="Start a simulation">
-<h1 class="display-serif mb-4 text-2xl">Start a simulation</h1>
+<h1 class="page-title">Start a simulation</h1>
 <div class="space-y-3">
 <textarea id="premise" rows="3" class="w-full border border-agedbrown/40 bg-white p-2" placeholder="What if…? e.g. the printing press was never invented"></textarea>
 <div class="flex items-center gap-3">
@@ -14,6 +14,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 <p id="err" class="text-sm text-deepred"></p>
 </div>
 <script>
+  const BASE = (import.meta.env.BASE_URL ?? '/').replace(/\/$/, '');
   const DOMS = ["Politics","Religion","Science","Culture","Economics"];
   const box = document.getElementById("doms")!;
   const checked = new Set(DOMS);
@@ -37,7 +38,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     });
     if (!r.ok) { document.getElementById("err")!.textContent = await r.text(); return; }
     const data = await r.json();
-    window.location.href = `/timeline?sid=${data.session_id}`;
+    window.location.href = `${BASE}/timeline?sid=${data.session_id}`;
   };
 </script>
 </BaseLayout>

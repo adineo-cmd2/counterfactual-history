@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { apiGet } from '../../lib/apiClient';
+const BASE = (import.meta.env.BASE_URL ?? '/').replace(/\/$/, '');
 
 interface Sim {
   id: number;
@@ -34,7 +35,7 @@ export default function BranchTree() {
               {collapsed[s.id] ? '+' : '−'}
             </button>
           )}
-          <button className="underline" onClick={() => { window.location.href = `/timeline?sid=${s.id}`; }}>
+          <button className="underline" onClick={() => { window.location.href = `${BASE}/timeline?sid=${s.id}`; }}>
             #{s.id} {s.premise.slice(0, 60)}
           </button>
           <span className="text-xs opacity-60">({s.divergence_year})</span>

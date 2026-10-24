@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { apiGet, apiPost } from '../../lib/apiClient';
+const BASE = (import.meta.env.BASE_URL ?? '/').replace(/\/$/, '');
 
 interface Step {
   id: number;
@@ -49,7 +50,7 @@ export default function CausalTimeline() {
         step_id: stepId,
         premise: premise.trim(),
       });
-      window.location.href = `/timeline?sid=${data.child_session_id}`;
+      window.location.href = `${BASE}/timeline?sid=${data.child_session_id}`;
     } catch (e) {
       setError(e instanceof Error ? e.message : 'Branch failed.');
     }
